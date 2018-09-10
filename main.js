@@ -24,7 +24,7 @@ let h = React.createElement;
 
 
 var myContent = 
-[ h("h1", null, "First time using React js"),
+[ h("h1", {className:"myClass"}, "First time using React js"),
 h("ul", null, [    
     h("li", null, myData[0].id + ", " + myData[0].title + ", " + myData[0].body),
     h("li", null, myData[1].id + ", " + myData[1].title + ", " + myData[1].body),
