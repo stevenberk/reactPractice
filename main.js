@@ -4,7 +4,7 @@ let posts = [
     "id": 1,
     "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
     "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
-    "date": "May 1948"
+    "date": "May 1948",
   },
   {
     "userId": 1,
@@ -71,13 +71,14 @@ h('main', null, [
 h("h1", {className:"myClass"}, "First time using React js"),
 h("ul", null,
   posts.map(post =>
-  h('li', null, [
-  h("h2", null, post.id),
-  h("h3", null, post.title),
-  h("p", null, post.body),
-  h("p", {className:"dateClass"}, post.date)
+    h('li', null, [
+    h("h2", null, post.id),
+    h("h3", null, post.title),
+    h("p", null, post.body),
+    h("p", {className:"dateClass"}, post.date),
+    h("p", {className:"userIdClass"}, post.userId)
   ])
-),
+  ),
 ),
 h("footer", {className:"myClass"}, "Copyright 2019")
 ]);
