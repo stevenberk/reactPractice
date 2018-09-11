@@ -67,9 +67,12 @@ let posts = [
 /// react js code:
 let h = React.createElement;
 
+let header = "First time using React js";
+let newHeader = "🐍";
+
 let blogPage = (props) =>
 h('main', null, [ 
-h("h1", {className:"myClass"}, "First time using React js"),
+h("h1", {className:"myClass"}, header),
 h("ul", null,
   props.posts.map(post =>
     h('li', {}, [
@@ -81,7 +84,7 @@ h("ul", null,
     h('button', {
       onClick: () => {
         removeItem(post.title);
-        rerender();
+       snakify();
       }
     }, "Delete")
   ])
@@ -95,6 +98,21 @@ let rerender = () => {
     h(blogPage, {posts}), 
     document.getElementById("root"));  
 };
+
+let snakify = () => {
+  header = header + "s";
+  rerender();
+  snakeCounter();
+}
+
+let deleteCounter = 0
+
+let snakeCounter = () =>{
+  deleteCounter = deleteCounter + 1;
+  if (deleteCounter > 7){
+    header = newHeader;
+  }
+;}
 
 let removeItem = (itemToRemove) => {
 posts = posts.filter(currentPost => currentPost.title !== itemToRemove);}
