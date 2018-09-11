@@ -69,8 +69,8 @@ let h = React.createElement;
 let blogPage = () =>
 h('main', null, [ 
 h("h1", {className:"myClass"}, "First time using React js"),
-posts.map(post =>
-  h("ul", null,
+h("ul", null,
+  posts.map(post =>
   h('li', null, [
   h("h2", null, post.id),
   h("h3", null, post.title),
@@ -82,13 +82,6 @@ posts.map(post =>
 h("footer", {className:"myClass"}, "Copyright 2019")
 ]);
 
-// let myContent = 
-   
-    
-  
-   
-//     h("footer", {className:"myClass"}, "Copyright 2019")
-// ])
 ReactDOM.render(
     blogPage(), 
     document.getElementById("root"));  
