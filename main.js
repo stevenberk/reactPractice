@@ -66,15 +66,15 @@ let posts = [
 
 let h = React.createElement;
 
-let blogPage = () =>
+let blogPage = (props) =>
 h('main', null, [ 
 h("h1", {className:"myClass"}, "First time using React js"),
 h("ul", null,
-  posts.map(post =>
-    h('li', null, [
-    h("h2", null, post.id),
-    h("h3", null, post.title),
-    h("p", null, post.body),
+  props.posts.map(post =>
+    h('li', {}, [
+    h("h2", {}, post.id),
+    h("h3", {}, post.title),
+    h("p", {}, post.body),
     h("p", {className:"dateClass"}, post.date),
     h("p", {className:"userIdClass"}, post.userId)
   ])
@@ -84,5 +84,5 @@ h("footer", {className:"myClass"}, "Copyright 2019")
 ]);
 
 ReactDOM.render(
-    blogPage(), 
+    h(blogPage, {posts}), 
     document.getElementById("root"));  
