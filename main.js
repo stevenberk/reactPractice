@@ -4,7 +4,7 @@ let posts = [
     "id": 1,
     "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
     "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
-    "date": "Spring 1948"
+    "date": "May 1948"
   },
   {
     "userId": 1,
@@ -32,7 +32,7 @@ let posts = [
     "id": 5,
     "title": "nesciunt quas odio",
     "body": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque",
-    "date": "1982"
+    "date": "1982ish"
   },
   {
     "userId": 1,
@@ -65,20 +65,30 @@ let posts = [
 ];
 
 let h = React.createElement;
-var myContent = h('main', null, [ 
-    h("h1", {className:"myClass"}, "First time using React js"),
-    h("ul", null, 
-      posts.map(post =>
-        h('li', null, [
-        h("h2", null, post.id),
-        h("h3", null, post.title),
-        h("p", null, post.body),
-        h("p", {className:"dateClass"}, post.date)
-        ])
-      )
-    ), 
-    h("footer", {className:"myClass"}, "Copyright 2019")
-])
+
+let blogPage = () =>
+h('main', null, [ 
+h("h1", {className:"myClass"}, "First time using React js"),
+posts.map(post =>
+  h("ul", null,
+  h('li', null, [
+  h("h2", null, post.id),
+  h("h3", null, post.title),
+  h("p", null, post.body),
+  h("p", {className:"dateClass"}, post.date)
+  ])
+),
+),
+h("footer", {className:"myClass"}, "Copyright 2019")
+]);
+
+// let myContent = 
+   
+    
+  
+   
+//     h("footer", {className:"myClass"}, "Copyright 2019")
+// ])
 ReactDOM.render(
-    myContent, 
+    blogPage(), 
     document.getElementById("root"));  
