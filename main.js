@@ -1,3 +1,4 @@
+// content array:
 let posts = [
   {
     "userId": 1,
@@ -63,7 +64,7 @@ let posts = [
     "date": "December 27th, 2017"
   } 
 ];
-
+/// react js code:
 let h = React.createElement;
 
 let blogPage = (props) =>
@@ -79,8 +80,7 @@ h("ul", null,
     h("p", {className:"hiddenClass"}, post.userId),
     h('button', {
       onClick: () => {
-        posts = posts.filter(currentPost => currentPost.title !== post.title);
-      
+        removeItem(post.title);
         rerender();
       }
     }, "Delete")
@@ -95,5 +95,8 @@ let rerender = () => {
     h(blogPage, {posts}), 
     document.getElementById("root"));  
 };
+
+let removeItem = (itemToRemove) => {
+posts = posts.filter(currentPost => currentPost.title !== itemToRemove);}
 
 rerender();
