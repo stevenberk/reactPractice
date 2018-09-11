@@ -76,13 +76,24 @@ h("ul", null,
     h("h3", {}, post.title),
     h("p", {}, post.body),
     h("p", {className:"dateClass"}, post.date),
-    h("p", {className:"userIdClass"}, post.userId)
+    h("p", {className:"hiddenClass"}, post.userId),
+    h('button', {
+      onClick: () => {
+        posts = posts.filter(currentPost => currentPost.title !== post.title);
+      
+        rerender();
+      }
+    }, "Delete")
   ])
   ),
 ),
 h("footer", {className:"myClass"}, "Copyright 2019")
 ]);
 
-ReactDOM.render(
+let rerender = () => {
+  ReactDOM.render(
     h(blogPage, {posts}), 
     document.getElementById("root"));  
+};
+
+rerender();
