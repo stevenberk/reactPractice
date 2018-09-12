@@ -1,5 +1,5 @@
 // content array:
-let posts = [
+let initalListofPosts = [
   {
     "userId": 1,
     "id": 1,
@@ -74,56 +74,65 @@ let posts = [
   } 
 ];
 /// react js code:
-let h = React.createElement;
 
 let header = "Booklist made with React js";
-let newHeader = "🐍";
+let snakeHeader = "🐍";
 
-let blogPage = (props) =>
-h('main', null, [ 
-h("h1", {className:"myClass"}, header),
-h("ul", null,
-  props.posts.map(post =>
-    h('li', {}, [
-    h("h2", {}, post.id),
-    h("h3", {}, post.title),
-    h("p", {}, post.author),
-    h("p", {className:"dateClass"}, post.date),
-    h("p", {className:"hiddenClass"}, post.userId),
-    h("p", {}, post.genre),
-    h('button', {
-      onClick: () => {
-        removeItem(post.title);
-       snakify();
-      }
-    }, "Delete")
-  ])
-  ),
-),
-h("footer", {className:"myClass"}, "Copyright 2019")
-]);
-
-let rerender = () => {
-  ReactDOM.render(
-    h(blogPage, {posts}), 
-    document.getElementById("root"));  
-};
-
-let snakify = () => {
-  header = header + "sss";
-  rerender();
-  snakeCounter();
-}
-
-let deleteCounter = 0
+let h = React.createElement;
+let deleteCounter = 0;
 let snakeCounter = () =>{
   deleteCounter = deleteCounter + 1;
   if (deleteCounter > 7){
-    header = newHeader;
+    header = snakeHeader;
   }
-;}
+}
 
-let removeItem = (itemToRemove) => {
-posts = posts.filter(currentPost => currentPost.title !== itemToRemove);}
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+     posts: initalListofPosts
+    };
+  }
 
-rerender();
+  render() {
+    let snakify = () => {
+      header = header + "s";
+    }
+    
+    let removeItem = (itemToRemove) => { 
+      this.setState({
+        posts: this.state.posts.filter(currentPost =>
+          currentPost.title !== itemToRemove)
+      })
+    }
+
+    return( 
+      h('main', null, [ 
+      h("h1", {className:"myClass"}, header),
+      h("ul", null,
+        this.state.posts.map(post =>
+          h('li', {}, [
+          h("h2", {}, post.id),
+          h("h3", {}, post.title),
+          h("p", {}, post.author),
+          h("p", {className:"dateClass"}, post.date),
+          h("p", {className:"hiddenClass"}, post.userId),
+          h("p", {}, post.genre),
+          h('button', {
+            onClick: () => {
+            removeItem(post.title);
+            snakify();
+            snakeCounter();
+            }
+          }, "Delete")
+        ])
+        ),
+        ),
+      h("footer", {className:"myClass"}, "Copyright 2019")
+      ]));
+  }
+}
+ReactDOM.render(
+  h(MyComponent), 
+  document.getElementById("root"));  
