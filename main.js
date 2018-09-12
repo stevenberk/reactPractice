@@ -3,71 +3,80 @@ let posts = [
   {
     "userId": 1,
     "id": 1,
-    "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-    "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
-    "date": "May 1948",
+    "title": "Life and Death of Great American Cities",
+    "author": "Jane Jacobs",
+    "date": "1961",
+    "genre": "nonfiction"
   },
   {
     "userId": 1,
     "id": 2,
-    "title": "qui est esse",
-    "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla",
-    "date": "Summer 1967"
+    "title": "Burmese Days",
+    "author": "George Orwell",
+    "date": "1934",
+    "genre": "novel"
   },
   {
     "userId": 1,
     "id": 3,
-    "title": "ea molestias quasi exercitationem repellat qui ipsa sit aut",
-    "body": "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut",
-    "date": "Fall 1973"
+    "title": "The Crucible",
+    "author": "Arthur Miller",
+    "date": "1953",
+    "genre": "play"
   },
   {
     "userId": 1,
     "id": 4,
-    "title": "eum et est occaecati",
-    "body": "ullam et saepe reiciendis voluptatem adipisci\nsit amet autem assumenda provident rerum culpa\nquis hic commodi nesciunt rem tenetur doloremque ipsam iure\nquis sunt voluptatem rerum illo velit",
-    "date": "Winter 1977"
+    "title": "The Life-Changing Magic of Tidying Up",
+    "author": "Marie Kondo",
+    "date": "2011",
+    "genre": "self-help"
   },
   {
     "userId": 1,
     "id": 5,
-    "title": "nesciunt quas odio",
-    "body": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque",
-    "date": "1982ish"
+    "title": "Silent Spring",
+    "author": "Rachel Carson",
+    "date": "1962",
+    "genre": "nonfiction"
   },
   {
     "userId": 1,
     "id": 6,
-    "title": "dolorem eum magni eos aperiam quia",
-    "body": "ut aspernatur corporis harum nihil quis provident sequi\nmollitia nobis aliquid molestiae\nperspiciatis et ea nemo ab reprehenderit accusantium quas\nvoluptate dolores velit et doloremque molestiae",
-    "date": "1991"
+    "title": "Sharon and My Mother-in-law",
+    "author": "Saud Amiry",
+    "date": "2003",
+    "genre" : "Memoir"
   },
   {
     "userId": 1,
     "id": 7,
-    "title": "magnam facilis autem",
-    "body": "dolore placeat quibusdam ea quo vitae\nmagni quis enim qui quis quo nemo aut saepe\nquidem repellat excepturi ut quia\nsunt ut sequi eos ea sed quas",
-    "date": "2008"
+    "title": "Call Me By Your Name",
+    "author": "Andre Aciman",
+    "date": "2007",
+    "genre" : "novel"
   },
   {
     "userId": 1,
     "id": 8,
-    "title": "dolorem dolore est ipsam",
-    "body": "dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae",
-    "date": "Late Spring/Early Summer 2014"
+    "title": "Cabaret",
+    "author": "Joe Masteroff",
+    "date": "1966",
+    "genre": "Musical"
   },
   {
     "userId": 1,
     "id": 9,
-    "title": "nesciunt iure omnis dolorem tempora et accusantium",
-    "body": "consectetur animi nesciunt iure dolore\nenim quia ad\nveniam autem ut quam aut nobis\net est aut quod aut provident voluptas autem voluptas",
-    "date": "December 27th, 2017"
+    "title": "The Bell Jar",
+    "author": "Sylvia Plath",
+    "date": "1963",
+    "genre": "novel"
   } 
 ];
 /// react js code:
 let h = React.createElement;
 
-let header = "First time using React js";
+let header = "Booklist made with React js";
 let newHeader = "🐍";
 
 let blogPage = (props) =>
@@ -78,9 +87,10 @@ h("ul", null,
     h('li', {}, [
     h("h2", {}, post.id),
     h("h3", {}, post.title),
-    h("p", {}, post.body),
+    h("p", {}, post.author),
     h("p", {className:"dateClass"}, post.date),
     h("p", {className:"hiddenClass"}, post.userId),
+    h("p", {}, post.genre),
     h('button', {
       onClick: () => {
         removeItem(post.title);
@@ -100,13 +110,12 @@ let rerender = () => {
 };
 
 let snakify = () => {
-  header = header + "s";
+  header = header + "sss";
   rerender();
   snakeCounter();
 }
 
 let deleteCounter = 0
-
 let snakeCounter = () =>{
   deleteCounter = deleteCounter + 1;
   if (deleteCounter > 7){
