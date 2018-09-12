@@ -74,42 +74,45 @@ let initalListofPosts = [
   } 
 ];
 /// react js code:
-
-let header = "Booklist made with React js";
-let snakeHeader = "🐍";
-
+let initialHeader = "Booklist made with React js";
+let mySnakeHeader = "🐍";
 let h = React.createElement;
-let deleteCounter = 0;
-let snakeCounter = () =>{
-  deleteCounter = deleteCounter + 1;
-  if (deleteCounter > 7){
-    header = snakeHeader;
-  }
-}
 
 class MyComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-     posts: initalListofPosts
+      header: initialHeader,
+      deleteCounter: 0,
+      posts: initalListofPosts,
+      snakeHeader: mySnakeHeader
     };
   }
-
   render() {
     let snakify = () => {
-      header = header + "s";
+      this.setState({
+        header: this.state.header + "s"
+      })
     }
-    
     let removeItem = (itemToRemove) => { 
       this.setState({
         posts: this.state.posts.filter(currentPost =>
           currentPost.title !== itemToRemove)
       })
     }
-
+    let snakeCounter = () => {
+      this.setState({
+        deleteCounter: this.state.deleteCounter + 1
+      })
+      if (this.state.deleteCounter > 6){
+        this.setState({
+          header: this.state.snakeHeader
+        })
+      }
+    }
     return( 
       h('main', null, [ 
-      h("h1", {className:"myClass"}, header),
+      h("h1", {className:"myClass"}, this.state.header),
       h("ul", null,
         this.state.posts.map(post =>
           h('li', {}, [
@@ -130,7 +133,8 @@ class MyComponent extends React.Component {
         ),
         ),
       h("footer", {className:"myClass"}, "Copyright 2019")
-      ]));
+      ])
+    );
   }
 }
 ReactDOM.render(
